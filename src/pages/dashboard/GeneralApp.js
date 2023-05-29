@@ -1,12 +1,16 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
+
+//Dynamic import
+const Dog = lazy(() => import("../../components/Dog"));
 
 const GeneralApp = () => {
-
-  return (
-    <>
-      App
-    </>
-  );
+	return (
+		<>
+			<Suspense fallback="Loading...">
+				<Dog />
+			</Suspense>
+		</>
+	);
 };
 
 export default GeneralApp;
