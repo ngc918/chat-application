@@ -167,7 +167,7 @@ const Chats = () => {
 					direction={"column"}
 					sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }}
 				>
-					<SimpleBarStyle>
+					<SimpleBarStyle timeout={500}>
 						<Stack spacing={2.4}>
 							<Typography variant="subtitle2" sx={{ color: "#676767" }}>
 								Pinned
