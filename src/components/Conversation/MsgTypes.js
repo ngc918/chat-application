@@ -7,8 +7,16 @@ import {
 	Box,
 	Link,
 	IconButton,
+	Menu,
+	MenuItem,
 } from "@mui/material";
-import { DownloadSimple, Image } from "phosphor-react";
+import {
+	DotsThree,
+	DotsThreeVertical,
+	DownloadSimple,
+	Image,
+} from "phosphor-react";
+import { Message_options } from "../../data";
 
 const DocMsg = ({ e }) => {
 	const theme = useTheme();
@@ -49,6 +57,7 @@ const DocMsg = ({ e }) => {
 					</Typography>
 				</Stack>
 			</Box>
+			<MessageOptions />
 		</Stack>
 	);
 };
@@ -103,6 +112,7 @@ const LinkMsg = ({ e }) => {
 					</Stack>
 				</Stack>
 			</Box>
+			<MessageOptions />
 		</Stack>
 	);
 };
@@ -144,6 +154,7 @@ const ReplyMsg = ({ e }) => {
 					</Typography>
 				</Stack>
 			</Box>
+			<MessageOptions />
 		</Stack>
 	);
 };
@@ -176,6 +187,7 @@ const MediaMsg = ({ e }) => {
 					</Typography>
 				</Stack>
 			</Box>
+			<MessageOptions />
 		</Stack>
 	);
 };
@@ -201,6 +213,7 @@ const TextMsg = ({ e }) => {
 					{e.message}
 				</Typography>
 			</Box>
+			<MessageOptions />
 		</Stack>
 	);
 };
@@ -219,6 +232,42 @@ const Timeline = ({ e }) => {
 			</Typography>
 			<Divider width="46%" />
 		</Stack>
+	);
+};
+
+const MessageOptions = () => {
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const open = Boolean(anchorEl);
+	const handleClick = (event) => {
+		setAnchorEl(event.currentTarget);
+	};
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+	return (
+		<>
+			<DotsThreeVertical
+				id="basic-button"
+				aria-controls={open ? "basic-menu" : undefined}
+				aria-haspopup="true"
+				aria-expanded={open ? "true" : undefined}
+				onClick={handleClick}
+				size={20}
+			/>
+			<Menu
+				id="basic-menu"
+				anchorEl={anchorEl}
+				open={open}
+				onClose={handleClose}
+				MenuListProps={{ "aria-labelledby": "basic-button" }}
+			>
+				<Stack spacing={1} px={1}>
+					{Message_options.map((e) => (
+						<MenuItem onClick={() => {}}>{e.title}</MenuItem>
+					))}
+				</Stack>
+			</Menu>
+		</>
 	);
 };
 
