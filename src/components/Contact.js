@@ -2,15 +2,28 @@ import React from "react";
 import {
 	Avatar,
 	Box,
+	Button,
+	Divider,
 	IconButton,
 	Stack,
 	Typography,
 	useTheme,
 } from "@mui/material";
-import { X } from "phosphor-react";
+import {
+	ArrowRight,
+	Bell,
+	CaretRight,
+	Phone,
+	Prohibit,
+	Star,
+	Trash,
+	VideoCamera,
+	X,
+} from "phosphor-react";
 import { useDispatch } from "react-redux";
 import { ToggleSideBar } from "../redux/slices/app";
 import { faker } from "@faker-js/faker";
+import AntSwitch from "./AntSwitch";
 
 const Contact = () => {
 	const theme = useTheme();
@@ -63,6 +76,99 @@ const Contact = () => {
 							alt={faker.name.firstName()}
 							sx={{ height: 64, width: 64 }}
 						/>
+						<Stack spacing={0.5}>
+							<Typography variant="article" fontWeight={600}>
+								{faker.name.fullName()}
+							</Typography>
+							<Typography variant="body2" fontWeight={500}>
+								{"+1 (786) 776 5328"}
+							</Typography>
+						</Stack>
+					</Stack>
+					<Stack
+						direction="row"
+						alignItems={"center"}
+						justifyContent={"space-evenly"}
+					>
+						<Stack spacing={1} alignItems={"center"}>
+							<IconButton>
+								<Phone />
+							</IconButton>
+							<Typography variant="overline">Voice</Typography>
+						</Stack>
+						<Stack spacing={1} alignItems={"center"}>
+							<IconButton>
+								<VideoCamera />
+							</IconButton>
+							<Typography variant="overline">Video</Typography>
+						</Stack>
+					</Stack>
+					<Divider />
+					<Stack spacing={0.5}>
+						<Typography variant="article">About</Typography>
+						<Typography variant="body2">
+							Hi there, feel free to contact me
+						</Typography>
+					</Stack>
+					<Divider />
+					<Stack
+						spacing={0.5}
+						direction={"row"}
+						alignItems={"center"}
+						justifyContent={"space-between"}
+					>
+						<Typography variant="subtitle2">Media, Links, & Docs</Typography>
+						<Button endIcon={<CaretRight />}>201</Button>
+					</Stack>
+					<Stack direction="row" spacing={2} alignItems={"center"}>
+						{[1, 2, 3].map((e) => {
+							<Box>
+								<img src={faker.image.food()} alt={faker.name.fullName()} />
+							</Box>;
+						})}
+					</Stack>
+					<Divider />
+					<Stack
+						direction={"row"}
+						alignItems={"center"}
+						justifyContent={"space-between"}
+					>
+						<Stack direction={"row"} alignItems={"center"} spacing={2}>
+							<Star size={21} />
+							<Typography variant="subtitle2">Starred Messages</Typography>
+						</Stack>
+						<IconButton>
+							<CaretRight />
+						</IconButton>
+					</Stack>
+					<Divider />
+					<Stack
+						direction={"row"}
+						alignItems={"center"}
+						justifyContent={"space-between"}
+					>
+						<Stack direction={"row"} alignItems={"center"} spacing={2}>
+							<Bell size={21} />
+							<Typography variant="subtitle2">Mute Notifications</Typography>
+						</Stack>
+						<AntSwitch />
+					</Stack>
+					<Divider />
+					<Typography>1 group in common</Typography>
+					<Stack direction={"row"} spacing={2} alignItems={"center"}>
+						<Avatar src={faker.image.avatar()} alt={faker.name.fullName()} />
+						<Stack spacing={0.5}>
+							<Typography variant="subtitle2">Coding Group</Typography>
+							<Typography variant="caption">Me, You, I</Typography>
+						</Stack>
+					</Stack>
+					<Stack direction={"row"} alignItems={"center"} spacing={2}>
+						<Button fullWidth variant="outlined" startIcon={<Prohibit />}>
+							Block
+						</Button>
+						<Button fullWidth variant="outlined" startIcon={<Trash />}>
+							Delete
+						</Button>
 					</Stack>
 				</Stack>
 			</Stack>
