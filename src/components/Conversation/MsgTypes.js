@@ -18,7 +18,7 @@ import {
 } from "phosphor-react";
 import { Message_options } from "../../data";
 
-const DocMsg = ({ e }) => {
+const DocMsg = ({ e, menu }) => {
 	const theme = useTheme();
 	return (
 		<Stack direction="row" justifyContent={e.incoming ? "start" : "end"}>
@@ -57,12 +57,12 @@ const DocMsg = ({ e }) => {
 					</Typography>
 				</Stack>
 			</Box>
-			<MessageOptions />
+			{menu && <MessageOptions />}
 		</Stack>
 	);
 };
 
-const LinkMsg = ({ e }) => {
+const LinkMsg = ({ e, menu }) => {
 	const theme = useTheme();
 	return (
 		<Stack direction="row" justifyContent={e.incoming ? "start" : "end"}>
@@ -112,12 +112,12 @@ const LinkMsg = ({ e }) => {
 					</Stack>
 				</Stack>
 			</Box>
-			<MessageOptions />
+			{menu && <MessageOptions />}
 		</Stack>
 	);
 };
 
-const ReplyMsg = ({ e }) => {
+const ReplyMsg = ({ e, menu }) => {
 	const theme = useTheme();
 	return (
 		<Stack direction="row" justifyContent={e.incoming ? "start" : "end"}>
@@ -154,12 +154,12 @@ const ReplyMsg = ({ e }) => {
 					</Typography>
 				</Stack>
 			</Box>
-			<MessageOptions />
+			{menu && <MessageOptions />}
 		</Stack>
 	);
 };
 
-const MediaMsg = ({ e }) => {
+const MediaMsg = ({ e, menu }) => {
 	const theme = useTheme();
 	return (
 		<Stack direction="row" justifyContent={e.incoming ? "start" : "end"}>
@@ -187,12 +187,12 @@ const MediaMsg = ({ e }) => {
 					</Typography>
 				</Stack>
 			</Box>
-			<MessageOptions />
+			{menu && <MessageOptions />}
 		</Stack>
 	);
 };
 
-const TextMsg = ({ e }) => {
+const TextMsg = ({ e, menu }) => {
 	const theme = useTheme();
 	return (
 		<Stack direction={"row"} justifyContent={e.incoming ? "start" : "end"}>
@@ -213,7 +213,7 @@ const TextMsg = ({ e }) => {
 					{e.message}
 				</Typography>
 			</Box>
-			<MessageOptions />
+			{menu && <MessageOptions />}
 		</Stack>
 	);
 };
