@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as Yup from "yup";
+import { object, string, number, date, InferType } from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormProvider from "../../components/hook-form/FormProvider";
@@ -17,11 +17,11 @@ import { Eye, EyeSlash } from "phosphor-react";
 const LoginForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 
-	const LoginSchema = Yup.object().shape({
-		email: Yup.string()
+	const LoginSchema = object({
+		email: string()
 			.required("Email is required")
 			.email("Email must be a valid email address"),
-		password: Yup.string().required("Password is required"),
+		password: string().required("Password is required"),
 	});
 
 	const defaultValues = {
@@ -83,7 +83,7 @@ const LoginForm = () => {
 			</Stack>
 			<Stack alignItems={"flex-end"} sx={{ my: 2 }}>
 				<Link variant="body2" color={"inherit"} underline="always">
-					Forgot Password
+					Forgot Password?
 				</Link>
 			</Stack>
 			<Button

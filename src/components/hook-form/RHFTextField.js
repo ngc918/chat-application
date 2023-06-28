@@ -16,7 +16,7 @@ export default function RHFTextField({ name, helperText, ...other }) {
 		<Controller
 			name={name}
 			control={control}
-			render={({ field, fieldState: { error } }) => {
+			render={({ field, fieldState: { error } }) => (
 				<TextField
 					{...field}
 					fullWidth
@@ -28,8 +28,8 @@ export default function RHFTextField({ name, helperText, ...other }) {
 					error={!!error}
 					helperText={error ? error.message : helperText}
 					{...other}
-				/>;
-			}}
+				/>
+			)}
 		/>
 	);
 }
