@@ -18,7 +18,7 @@ import { Eye, EyeSlash } from "phosphor-react";
 const NewPasswordForm = () => {
 	const [showPassword, setShowPassword] = useState(false);
 
-	const NewPasswordSchema = object({
+	const NewPasswordSchema = Yup.object().shape({
 		newPassword: Yup.string()
 			.min(6, "Password must be at least 6 characters")
 			.required("Password is required"),
@@ -100,27 +100,26 @@ const NewPasswordForm = () => {
 						),
 					}}
 				/>
-			</Stack>
-
-			<Button
-				fullWidth
-				color="inherit"
-				size="large"
-				type="submit"
-				variant="contained"
-				sx={{
-					bgcolor: "text.primary",
-					color: (theme) =>
-						theme.palette.mode === "light" ? "common.white" : "grey.800",
-					"&:hover": {
+				<Button
+					fullWidth
+					color="inherit"
+					size="large"
+					type="submit"
+					variant="contained"
+					sx={{
 						bgcolor: "text.primary",
 						color: (theme) =>
 							theme.palette.mode === "light" ? "common.white" : "grey.800",
-					},
-				}}
-			>
-				Submit
-			</Button>
+						"&:hover": {
+							bgcolor: "text.primary",
+							color: (theme) =>
+								theme.palette.mode === "light" ? "common.white" : "grey.800",
+						},
+					}}
+				>
+					Submit
+				</Button>
+			</Stack>
 		</FormProvider>
 	);
 };
