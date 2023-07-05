@@ -17,12 +17,12 @@ import {
 	StyledInputBase,
 } from "../../components/Search";
 import ChatElement from "../../components/ChatElement";
+import "../../global.css";
 
 const Chats = () => {
 	const theme = useTheme();
 	return (
 		<Box
-			className="scrollbar"
 			sx={{
 				position: "relative",
 				width: 320,
@@ -62,16 +62,9 @@ const Chats = () => {
 					</Stack>
 					<Divider />
 				</Stack>
-				<Stack
-					spacing={2}
-					direction={"column"}
-					sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }}
-				>
-					<SimpleBarStyle
-						timeout={500}
-						clickOnTrac={false}
-						className="scrollbar"
-					>
+
+				<Stack className="scrollbar" style={{ overflowY: "auto" }}>
+					<Stack direction={"column"}>
 						<Stack spacing={2.4}>
 							<Typography variant="subtitle2" sx={{ color: "#676767" }}>
 								Pinned
@@ -88,7 +81,7 @@ const Chats = () => {
 								return <ChatElement {...e} />;
 							})}
 						</Stack>
-					</SimpleBarStyle>
+					</Stack>
 				</Stack>
 			</Stack>
 		</Box>

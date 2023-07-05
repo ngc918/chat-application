@@ -5,7 +5,6 @@ import ThemeProvider from "./theme";
 // components
 import ThemeSettings from "./components/settings";
 //scrollbar
-import "./global.css";
 
 function App() {
 	return (

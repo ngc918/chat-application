@@ -9,41 +9,44 @@ import {
 	ReplyMsg,
 	DocMsg,
 } from "./MsgTypes";
+import "../../global.css";
 
 const Message = ({ menu }) => {
 	return (
 		<Box p={3}>
-			<Stack spacing={3}>
-				{Chat_History.map((e) => {
-					switch (e.type) {
-						case "divider":
-							//Timeline
-							return <Timeline e={e} />;
+			<Stack className="scrollbar" style={{ overflowY: "auto" }}>
+				<Stack spacing={3}>
+					{Chat_History.map((e) => {
+						switch (e.type) {
+							case "divider":
+								//Timeline
+								return <Timeline e={e} />;
 
-						case "msg":
-							switch (e.subtype) {
-								case "img":
-									// img msg
-									return <MediaMsg e={e} menu={menu} />;
-								case "doc":
-									// doc msg
-									return <DocMsg e={e} menu={menu} />;
-								case "link":
-									// link msg
-									return <LinkMsg e={e} menu={menu} />;
-								case "reply":
-									//reply msg
-									return <ReplyMsg e={e} menu={menu} />;
-								default:
-									// text msg
-									return <TextMsg e={e} menu={menu} />;
-							}
-							break;
+							case "msg":
+								switch (e.subtype) {
+									case "img":
+										// img msg
+										return <MediaMsg e={e} menu={menu} />;
+									case "doc":
+										// doc msg
+										return <DocMsg e={e} menu={menu} />;
+									case "link":
+										// link msg
+										return <LinkMsg e={e} menu={menu} />;
+									case "reply":
+										//reply msg
+										return <ReplyMsg e={e} menu={menu} />;
+									default:
+										// text msg
+										return <TextMsg e={e} menu={menu} />;
+								}
+								break;
 
-						default:
-							return <></>;
-					}
-				})}
+							default:
+								return <></>;
+						}
+					})}
+				</Stack>
 			</Stack>
 		</Box>
 	);
