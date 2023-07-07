@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	Box,
 	Divider,
@@ -16,9 +16,17 @@ import {
 } from "../../components/Search";
 import { MagnifyingGlass, Phone, Plus } from "phosphor-react";
 import { CallLogElement } from "../../components/CallElement";
+import { CallList } from "../../data";
+import StartCall from "../../sections/main/StartCall";
 
 const Call = () => {
 	const theme = useTheme();
+	const [openDialog, setOpenDialog] = useState(false);
+
+	const handleCloseDialog = () => {
+		setOpenDialog(false);
+	};
+
 	return (
 		<>
 			<Stack direction="row" sx={{ width: "100%" }}>
@@ -60,10 +68,10 @@ const Call = () => {
 							</Typography>
 							<IconButton
 								onClick={() => {
-									// setOpenDialog(true);
+									setOpenDialog(true);
 								}}
 							>
-								<Phone style={{ color: theme.palette.primary.main }} />
+								<Plus style={{ color: theme.palette.primary.main }} />
 							</IconButton>
 						</Stack>
 						<Divider />
@@ -76,10 +84,11 @@ const Call = () => {
 						>
 							<Stack spacing={2.5}>
 								{/* */}
-								<Typography variant="subtitle2" sx={{ color: "#676667" }}>
-									Pinned
-								</Typography>
+
 								{/* Call Logs */}
+								{CallList.map((e) => (
+									<CallLogElement {...e} />
+								))}
 								<CallLogElement online={true} />
 							</Stack>
 						</Stack>
@@ -88,6 +97,9 @@ const Call = () => {
 				{/* Right */}
 				{/* TODO: Reuse Conversation Components */}
 			</Stack>
+			{openDialog && (
+				<StartCall open={openDialog} handleClose={handleCloseDialog} />
+			)}
 		</>
 	);
 };
