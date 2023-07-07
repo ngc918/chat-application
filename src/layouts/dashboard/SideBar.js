@@ -16,11 +16,41 @@ import { Nav_Buttons, Profile_Menu } from "../../data";
 import useSettings from "../../hooks/useSettings";
 import { faker } from "@faker-js/faker";
 import Logo from "../../assets/Images/logo.ico";
+import { useNavigate } from "react-router-dom";
+
+const getPath = (index) => {
+	switch (index) {
+		case 0:
+			return "/app";
+		case 1:
+			return "/group";
+		case 2:
+			return "/call";
+		case 3:
+			return "/settings";
+	}
+};
+
+const getMenuPath = (index) => {
+	switch (index) {
+		case 0:
+			return "/profile";
+		case 1:
+			return "/settings";
+		case 2:
+			//TODO => Update token and set isAuthenticated = false
+			return "auth/login";
+		default:
+			break;
+	}
+};
 
 const SideBar = () => {
 	const theme = useTheme();
+	const navigate = useNavigate();
 	const [selected, setSelected] = useState(0);
 	const { onToggleMode } = useSettings();
+
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
@@ -83,6 +113,7 @@ const SideBar = () => {
 								<IconButton
 									onClick={() => {
 										setSelected(e.index);
+										navigate(getPath(e.index));
 									}}
 									sx={{
 										width: "max-content",
@@ -113,6 +144,7 @@ const SideBar = () => {
 							<IconButton
 								onClick={() => {
 									setSelected(3);
+									navigate(getPath(3));
 								}}
 								sx={{
 									width: "max-content",
@@ -159,9 +191,16 @@ const SideBar = () => {
 						}}
 					>
 						<Stack spacing={1} px={1}>
-							{Profile_Menu.map((e) => (
-								<MenuItem onClick={handleClick}>
+							{Profile_Menu.map((e, idx) => (
+								<MenuItem
+									onClick={() => {
+										handleClick();
+									}}
+								>
 									<Stack
+										onClick={() => {
+											navigate(getMenuPath(idx));
+										}}
 										sx={{ width: 100 }}
 										direction={"row"}
 										alignItems={"center"}
