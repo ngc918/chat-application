@@ -14,6 +14,7 @@ const rootPersistConfig = {
 
 const rootReducer = combineReducers({
 	app: appReducer,
+	auth: authReducer,
 });
 
 export { rootPersistConfig, rootReducer };
