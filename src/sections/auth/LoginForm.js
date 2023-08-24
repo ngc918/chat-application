@@ -14,8 +14,10 @@ import {
 } from "@mui/material";
 import { RHFTextField } from "../../components/hook-form";
 import { Eye, EyeSlash } from "phosphor-react";
+import { useDispatch } from "react-redux";
 
 const LoginForm = () => {
+	const dispatch = useDispatch();
 	const [showPassword, setShowPassword] = useState(false);
 
 	const LoginSchema = object({
@@ -45,6 +47,8 @@ const LoginForm = () => {
 	const onSubmit = async (data) => {
 		try {
 			// submit data to backend
+
+			dispatchEvent(LoginUser(data));
 		} catch (error) {
 			console.log(error);
 			reset();
