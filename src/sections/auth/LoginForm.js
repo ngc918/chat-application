@@ -48,7 +48,7 @@ const LoginForm = () => {
 		try {
 			// submit data to backend
 
-			dispatchEvent(LoginUser(data));
+			dispatch(LoginUser(data));
 		} catch (error) {
 			console.log(error);
 			reset();
