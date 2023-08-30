@@ -45,9 +45,22 @@ export function LoginUser(formValues) {
 			)
 			.then(function (response) {
 				console.log(response);
+
+				dispatch(
+					slice.action.logIn({
+						isLoggedIn: true,
+						token: response.data.token,
+					})
+				);
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
+	};
+}
+
+export function LogoutUser() {
+	return async (dispatch, getState) => {
+		dispatch(slice.actions.signOut());
 	};
 }
