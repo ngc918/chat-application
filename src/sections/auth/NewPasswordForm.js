@@ -71,7 +71,7 @@ const NewPasswordForm = () => {
 
 				<RHFTextField
 					name="password"
-					label=" New Password"
+					label="New Password"
 					type={showPassword ? "text" : "password"}
 					InputProps={{
 						endAdornment: (
