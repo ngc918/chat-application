@@ -89,7 +89,7 @@ const NewPasswordForm = () => {
 				/>
 				<RHFTextField
 					name="passwordConfirm"
-					label="Confirm Password "
+					label="Confirm Password"
 					type={showPassword ? "text" : "password"}
 					InputProps={{
 						endAdornment: (
